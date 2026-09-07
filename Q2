@@ -1,0 +1,23 @@
+Class Impressão: 
+    def__init__(self, texto):
+    self.texto = texto
+    self.quantidade = []
+
+    def caracteres(self):
+        return len(self.texto)
+
+
+    def letras_maiúsculas(self):
+        return self.texto upper
+
+    def letras_minúsculas(self):
+        return self.texto lower 
+
+    def vogais(self):
+        contador = 0 #começa da primeira letra3
+        for letra in self.texto: #pecorre cada letra do texto#
+            if letra in "AEIOU": #verifica se é vogal"
+                contador +=1 #soma quando encontra a vogal#
+        return contador #devolve o que achou#
+
+
