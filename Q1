@@ -1,0 +1,31 @@
+Class ProgressaoAritmetica:
+    def __init__(self, n, a1, r)
+    self.n = n 
+    self.a1= a1
+    self.r = r 
+    self.termo = [] # vão ser atribuidos os valores #
+    self.an = None # vai ser calculado após atribuição de valor#
+    self.soma = None #vai ser calculado após atribuição de valor#
+
+    def Calcular_termos(self):
+        for i in range(self.n):
+            termo = self.a1 + self.r * i 
+            self.termos.append(termo)   
+        self.an = self.termos[-1]
+
+    def Calcular_soma(self):
+        self.soma = self.n * (self.a1 + self.an) / 2 
+
+    def exibir_termos(self):
+        print("Termos da PA: ")
+        for temo in self.termos:
+            print(termo, end="")
+        print()
+
+    def exibir_soma(self):
+        print(f"Soma dos termos: {self.soma}")
+
+if __name__ == "__main__": 
+    n = int(input("Digite o número do termo (n):"))
+    ai= float(input("Digite o primeiro termo (a1):"))
+    r= float(input("Digite a razão (r): "))
