@@ -29,3 +29,9 @@ if __name__ == "__main__":
     n = int(input("Digite o número do termo (n):"))
     ai= float(input("Digite o primeiro termo (a1):"))
     r= float(input("Digite a razão (r): "))
+
+    pa = ProgressaoAritmetica(a1, n, r )
+    pa.Calcular_termos()
+    pa.Calcular_soma()
+    pa.exibir_termos()
+    pa.exibir_soma()
