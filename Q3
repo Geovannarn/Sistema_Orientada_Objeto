@@ -1,0 +1,31 @@
+Class Criptografia: 
+    def __init__(self, frase ):
+        self.frase = frase 
+        self.frase_criptografada = []
+
+    def Criptografar(self):
+        for caracteres in self.frase: #Pra cada caracterista dentro da fase#
+            if caracteres == "A": 
+                self.frase_criptografada.append("4")
+            elif caracteres == "E": 
+                self.frase_criptografada.append("3")
+            elif caracteres == "I": 
+                self.frase_criptografada.append("1")
+            elif caracteres == "O":
+                self.frase_criptografada.append("0")
+            elif caracteres == "U":
+                self.frase_criptografada.append("8")
+            else:
+                self.frase_criptografada.append(caracteres)
+        return"".join(self.frase_criptografada)
+
+        frase = input("Digite a frase: ")
+        Criptografia = criptografia(frase)
+        resultado = Criptografia.criptografia() # Cria objeto#
+
+        print("Código: ", resultado )
+
+
+    
+
+    
