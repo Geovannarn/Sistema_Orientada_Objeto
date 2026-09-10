@@ -1,0 +1,52 @@
+Class Produto:
+    def __init__(self, nome, preço, quantidade):
+        self.__nome = nome 
+        self.__preço = preço
+        self.__quantidade = quantidade 
+
+#getters#
+    def get_nome(self): #metódo público#
+        return self.__nome #atributo privado#
+    
+    def get_preço(self):
+        return self.__preço
+
+    def get_quantidade(self):
+        return self.__quantidade
+
+#setters#
+    def set_nome(self, novo_nome):
+        return self.__nome = novo_nome
+    
+    def set_preço(novo_preço):
+        return self.__preço = novo_preço
+
+    def set_quantidade(self, nova_quantidade):
+        return self.__quantidade = nova_quantidade 
+
+Class CarrinhoDeCompras:
+    def __init__(self):
+        self.__produtos = []
+
+    def adicionar_produto(self, produto):
+        self.__produtos.append(produto)
+    
+    def remover_produto(self, nome ):
+        for produto in self.__produtos:
+            if produto.get_nome() == nome:
+                self.__produtos.remove(produto)
+                print("Produto removido com sucesso!")
+                return 
+                      
+    def calcular_valor_total(self, produto):
+        total = 0
+        for produto if self.__produtos:
+            total += produtos.get_preço() * produto.get_quantidade()
+            return total 
+    
+    def listar_produtos(self, produto):
+        for produto in self.__produtos:
+            print(f"Quantidade: {produto.get_quantidade()}")
+            print(f"preço: {produto.get_preços()}")
+ 
+ 
