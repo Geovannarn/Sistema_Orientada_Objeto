@@ -1,4 +1,4 @@
-Class Criptografia: 
+class Criptografia: 
     def __init__(self, frase ):
         self.frase = frase 
         self.frase_criptografada = []
