@@ -1,4 +1,4 @@
-Class Produto:
+class Produto:
     def __init__(self, nome, preço, quantidade):
         self.__nome = nome 
         self.__preço = preço
@@ -16,21 +16,22 @@ Class Produto:
 
 #setters#
     def set_nome(self, novo_nome):
-        return self.__nome = novo_nome
+         self.__nome = novo_nome
     
-    def set_preço(novo_preço):
-        return self.__preço = novo_preço
+    def set_preço(self, novo_preço):
+         self.__preço = novo_preço
 
     def set_quantidade(self, nova_quantidade):
-        return self.__quantidade = nova_quantidade 
+         self.__quantidade = nova_quantidade 
 
-Class CarrinhoDeCompras:
+class CarrinhoDeCompras:
     def __init__(self):
         self.__produtos = []
 
     def adicionar_produto(self, produto):
         self.__produtos.append(produto)
-    
+        print("Produto adicionado com sucesso!")
+
     def remover_produto(self, nome ):
         for produto in self.__produtos:
             if produto.get_nome() == nome:
@@ -49,4 +50,36 @@ Class CarrinhoDeCompras:
             print(f"Quantidade: {produto.get_quantidade()}")
             print(f"preço: {produto.get_preços()}")
  
- 
+ #Programa principal 
+     Carinho = CarrinhoDeCompras()
+    
+    while True:
+        print ("\n ====CARRINHO DE COMPRAS====")
+        print("1. Adicionar produto")
+        print("2. Remover produto")
+        print("3. Conteúdo do Carrinho")
+        print("4. Total de Compras") 
+
+        opção = input("Escolha a opção desejada:")
+
+        if opção == "1":
+            nome = input("Digite o nome do produto desejado:")
+            quantidade = int(input("Digite a quantidade desejada: "))
+            preco = float(input("Digite o preço do produto:"))
+            carrinho.adicionar_produto(nome, quantidade, preco)
+            print("Produto adicionado com sucesso!")
+        
+        elif opção == "2":
+            nome = input("Digite o nome do produto que deseja retirar:")
+            carrinho.remove_produto(nome)
+            
+        elif opção == "3":
+            carrinho.listar_produtos(nome, quantidade, preco)
+
+        elif opção  == "4":
+           total = carrinho.calcular_valor_total(nome, quantidade, preco)
+            print(f"O valor total da compra é: R${total:.2f}")
+
+        else: 
+            print("Opção inválida.")
+
