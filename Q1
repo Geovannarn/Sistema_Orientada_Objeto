@@ -1,4 +1,4 @@
-Class ProgressaoAritmetica:
+class ProgressaoAritmetica:
     def __init__(self, n, a1, r)
     self.n = n 
     self.a1= a1

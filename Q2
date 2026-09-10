@@ -1,4 +1,4 @@
-Class Impressão: 
+class Impressão: 
     def__init__(self, texto):
     self.texto = texto
     self.quantidade = []
