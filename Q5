@@ -1,28 +1,78 @@
+
 class Documento:
-    def __init__(self,titulo, conteúdo):
+    def __init__(self, titulo, conteúdo):
         self.__titulo = titulo
         self.__conteúdo = conteúdo
 
-#getters#
+    # getters
     def get_titulo(self):
-      return self.__titulo  
-    
+        return self.__titulo
+
     def get_conteúdo(self):
         return self.__conteúdo
 
-#setters#
+    # setters
     def set_titulo(self, novo_titulo):
         self.__titulo = novo_titulo
-    
-    def set_conteúdo(self, novo_onteúdo):
+
+    def set_conteúdo(self, novo_conteúdo):
         self.__conteúdo = novo_conteúdo
 
 
 class Impressora:
-    def imprimir (self, documento)
-    print("\n ====IMPRESSÃO====")
-    print("Titulo:", conteúdo.get_titulo())
-    print("Conteúdo:", conteúdo.get_conteúdo())
-    print("====================================")
+    def imprimir(self, documento):
+        print("\n==== IMPRESSÃO ====")
+        print("Título:", documento.get_titulo())
+        print("Conteúdo:", documento.get_conteúdo())
+        print("==============================")
 
-    
+
+# Programa Principal
+
+documentos = []
+impressora = Impressora()
+
+while True:
+    print("\n======== PAINEL DE IMPRESSÃO ========")
+    print("1. Criar Documento")
+    print("2. Visualizar Documentos")
+    print("3. Encerrar Sessão")
+
+    opção = input("Escolha uma opção: ")
+
+    if opção == "1":
+        titulo = input("Digite o título do documento: ")
+        conteúdo = input("Digite o conteúdo do documento: ")
+
+        documento = Documento(titulo, conteúdo)
+        documentos.append(documento)
+
+        print("Documento criado com sucesso!")
+
+    elif opção == "2":
+
+        if len(documentos) == 0:                         # Verifica se a lista de documentos está vazia
+            print("Nenhum documento foi criado.")        # Mostra uma mensagem avisando que não há documentos
+            continue                                    # Volta para o início do while
+
+        print("\n===== DOCUMENTOS =====")
+
+        for i, documento in enumerate(documentos):      # Percorre os documentos e pega o número e o objeto
+            print(f"{i + 1}. {documento.get_titulo()}") # Mostra o número e o título do documento
+
+        escolha = int(input("Selecione o documento desejado: "))
+
+        if 1 <= escolha <= len(documentos):             # Verifica se o número escolhido existe
+            documento_selecionado = documentos[escolha - 1] # Pega o documento escolhido
+            impressora.imprimir(documento_selecionado)  # Envia o documento pra Impressora
+
+        else:
+            print("Documento inválido.")
+
+    elif opção == "3":
+        print("Sessão encerrada.")
+        break
+
+    else:
+        print("Opção inválida.")
+
