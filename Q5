@@ -1,0 +1,28 @@
+class Documento:
+    def __init__(self,titulo, conteúdo):
+        self.__titulo = titulo
+        self.__conteúdo = conteúdo
+
+#getters#
+    def get_titulo(self):
+      return self.__titulo  
+    
+    def get_conteúdo(self):
+        return self.__conteúdo
+
+#setters#
+    def set_titulo(self, novo_titulo):
+        self.__titulo = novo_titulo
+    
+    def set_conteúdo(self, novo_onteúdo):
+        self.__conteúdo = novo_conteúdo
+
+
+class Impressora:
+    def imprimir (self, documento)
+    print("\n ====IMPRESSÃO====")
+    print("Titulo:", conteúdo.get_titulo())
+    print("Conteúdo:", conteúdo.get_conteúdo())
+    print("====================================")
+
+    
