@@ -1,10 +1,41 @@
-class Departamento:
-    def __init__(self,nome, salário)
-    self.__nome = nome 
-    self.__salário = salário 
-
+class Funcionário:
+    def __init__(self,nome, salário):
+        self.__nome = nome 
+        self.__salário = salário 
 
 #getters#
     def get_nome(self):
         return self.__nome
         
+    def get_salário(self):
+        return self.__salário
+
+#setters#
+    def set_nome(self, novo_nome):
+        self.__nome = novo_nome
+    
+    def set_salário(self, novo_salário):
+        self.__salário = novo_salário
+
+class Departamento:
+    def __init__(self, funcionário):
+        self.__funcionário = []
+
+    def adicionar_funcionário(self, funcionário):
+        self.__funcionário.append(funcionário)
+        print("Funcioário adicionado com sucesso!")
+    
+    def média_salarial(self, salário):
+        if len(self.__funcionários) == 0:
+            return 0 
+            total = 0 
+        for funcionário in self.__funcionário:
+            total += funcionário.get_salário()
+            média = total / len(self.__funcionário)
+            return média 
+
+    def listar_funcionários(self, funcionário):
+        for funcionário in self.funcionário:
+            print(f"Nome: {funcionário.get_nome()}")
+        
+ 
