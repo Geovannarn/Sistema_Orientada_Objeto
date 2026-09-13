@@ -1,0 +1,10 @@
+class Departamento:
+    def __init__(self,nome, salário)
+    self.__nome = nome 
+    self.__salário = salário 
+
+
+#getters#
+    def get_nome(self):
+        return self.__nome
+        
