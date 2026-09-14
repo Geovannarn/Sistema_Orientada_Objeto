@@ -38,4 +38,59 @@ class Departamento:
         for funcionário in self.funcionário:
             print(f"Nome: {funcionário.get_nome()}")
         
- 
+# Programa principal#
+    Departamento = []
+    Funcionários = []
+    
+    while True:
+        print("\n ====MENU======")
+        print("1.Criar Departamento ")
+        print("2. Cadastras Funcionário")
+        print("3. Adicionar Funcionário ao Departamento")
+        print("4. Média Salarial")
+        print("5. Finalizar ")
+
+        opção = input("Escolha uma opção:")
+
+        if opção == "1":
+            nome = input ("Digite o nome do Departamento:")
+            departamento = departamente(nome)
+            departamento.append(departamento)
+                print("Departamento criado com sucesso!")
+
+        elif opção =="2":
+            nome = input ("Nome do Funcionário:")
+            salário = float(input("Salário Correspondente:"))
+            
+            funcionário = Funcionário(nome, salário)
+            funcionários.append(funcionário)
+                print("Funcionário cadastrado com sucesso!")
+
+        elif opcao == "3":
+                print("É necessário criar pelo menos um departamento e um funcionário.")
+            if len(departamentos) == 0 or len(funcionarios) == 0:                                # se a lista de departamente for igual a 0 ou a lista de funcionaria for iguala 0#
+                print("É necessário criar pelo menos um departamento e um funcionário.")
+
+        else:
+                print("\nDepartamentos:")
+            for i, departamento in enumerate(departamentos):                                         #Para cada departamento dentro da lista departamentos, pegue o número#
+                print(i, "-", departamento.get_nome())                                                    # mostra o número e o nome do departamento#
+            escolha_departamento = int(input("Escolha o departamento: "))
+
+                print("\nFuncionários:")
+            for i, funcionario in enumerate(funcionarios):                                           #para cada funcionário, se coloca um numero#
+                print(i, "-", funcionario.get_nome())                                                    #mostra o numero e o nome do funcionario#
+            escolha_funcionario = int(input("Escolha o funcionário: "))
+
+            if 0 <= escolha_departamento < len(departamentos) and 0 <= escolha_funcionario < len(funcionarios):       # confere os números escolhidos realmente existem nas listas#
+            departamentos[escolha_departamento].adicionar_funcionario(
+                funcionarios[escolha_funcionario]
+            )
+                print("Funcionário adicionado ao departamento!")
+        
+            else:
+                print("Opção inválida.")
+
+
+        elif opção == "4":
+            salário = 
