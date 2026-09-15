@@ -1,0 +1,16 @@
+class Comôdo:
+    def __init__(self,sala, cozinha, banheiro, quarto)
+    self.__sala = sala
+    self.__cozinha = cozinha 
+    self.__banheiro = banheiro
+    self.__quarto = quarto
+
+class Casa:
+    def __init__(self, Comôdo)
+    self.__Comôdo = [] 
+
+    def área_total (self, Comôdo)
+        total = 0 
+        for comôdo if self.__Comôdo
+        total += comôdo.area                 #"." acessa o que tem dentro do objeto por não termos get e set#
+    
