@@ -1,0 +1,22 @@
+clas Comodo:
+    def __init__(self,sala, cozinha, banheiro, quarto)
+        self.__sala = sala 
+        self.__cozinha = cozinha 
+        self.__banheiro = banheiro
+        self.__quarto = quarto 
+
+
+class Casa:
+    def __init__(self, Comodo):
+        self.__Comodo = []
+    
+    def calcular_area_total(self):
+        total = 0 
+        for Comodo if self.__Comodo:
+            total+= Comodo.area
+            return total 
+    
+    def soma_total(self):
+            return self.calcular_area_total()
+            
+
