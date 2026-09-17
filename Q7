@@ -10,6 +10,13 @@ class Casa:
     def __init__(self, Comodo):
         self.__Comodo = []
     
+    def Adicionar_Comodo(self, Comodo)
+        self.__Comodo.append(Comodo)
+
+        def listar_comodos(self):
+        for comodo in self.__Comodo:
+            print(f"Nome: {comodo.nome} | Área: {comodo.area} m²")
+    
     def calcular_area_total(self):
         total = 0 
         for Comodo if self.__Comodo:
@@ -18,5 +25,48 @@ class Casa:
     
     def soma_total(self):
             return self.calcular_area_total()
+
+#Programa Principal#
+    Comodo =[]
+    Casa = []
+
+   While True:
+   print("\n ========== Menu ==========)
+   print("1. Criar Casa")
+   print("2. Adicionar Comôdos")
+   print("3. Listar Comôdos")
+   print("4. Calcular Área Total")
+   print("5. Encerrar Programa")
+
+   opção = input("Digite uma opção")
+
+   if opção == "1":
+        nome = input("Digite um nome para a Residência:")
+        print(f"Casa Criada: {nome}")
+
+    elif opção == "2":
+         quantidade = int(input(f"Quantos Comôdos deseja adicionar há {nome}?"))
+     
+        for i in range (quantidade):
+        nome = input("Digite o nome do Comôdo: ")
+        area = float(input("Digite o tamanho da área do Comôdo: "))
+        print("Cômodos criados com sucesso!")
+    
+    elif opção == "3":
+        casa.listar_comodos ()
+
+    elif opção == "4":
+         print(f"Área total da casa: {casa.calcular_area_total()} m²)
+
+    
+    else:
+        print("Programa Encerrado!")
+
+        
             
+
+
+
+
+   
 
