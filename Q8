@@ -1,0 +1,35 @@
+class Personagem:
+    def __init__(self, nome, nivel):
+        self.nome = nome
+        self.nivel = nivel
+
+    def atacar(self):
+        print(f"{self.nome} ataque genérico.")
+
+
+class Guerreiro(Personagem):
+    def __init__(self, nome, nivel, forca):
+        super().__init__(nome, nivel)
+        self.forca = forca
+
+    def atacar(self):
+        print(f"{self.nome} ataque físico com força {self.forca}!")
+
+
+class Mago(Personagem):
+    def __init__(self, nome, nivel, mana):
+        super().__init__(nome, nivel)
+        self.mana = mana
+
+    def atacar(self):
+        print(f"{self.nome} ataque mágico usando {self.mana} de mana!")
+
+# Programa principal
+
+personagem = Personagem("João", 5)
+guerreiro = Guerreiro("Thor", 10, 80)
+mago = Mago("Merlin", 8, 100)
+
+personagem.atacar()
+guerreiro.atacar()
+mago.atacar()
