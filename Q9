@@ -1,0 +1,200 @@
+class Participante:
+    def __init__(self, nome, email):
+        if not nome.strip():
+            raise ValueError("O nome não pode estar vazio.")
+
+        if not email.strip():
+            raise ValueError("O e-mail não pode estar vazio.")
+
+        self._nome = nome
+        self._email = email
+
+    def emitirCertificado(self):
+        return f"Certificado genérico emitido para {self._nome}."
+
+    def obterNome(self):
+        return self._nome
+
+    def obterEmail(self):
+        return self._email
+
+    def obterTipo(self):
+        return "Participante"
+
+
+class Aluno(Participante):
+    def __init__(self, nome, email, curso):
+        super().__init__(nome, email)
+
+        if not curso.strip():
+            raise ValueError("O curso não pode estar vazio.")
+
+        self._curso = curso
+
+    def emitirCertificado(self):
+        return (
+            f"Certificado de conclusão do curso "
+            f"'{self._curso}' emitido para {self._nome}."
+        )
+
+    def obterTipo(self):
+        return "Aluno"
+
+    def obterCurso(self):
+        return self._curso
+
+
+class Instrutor(Participante):
+    def __init__(self, nome, email, especialidade):
+        super().__init__(nome, email)
+
+        if not especialidade.strip():
+            raise ValueError("A especialidade não pode estar vazia.")
+
+        self._especialidade = especialidade
+
+    def emitirCertificado(self):
+        return (
+            f"Certificado de participação como palestrante "
+            f"emitido para {self._nome}."
+        )
+
+    def obterTipo(self):
+        return "Instrutor"
+
+    def obterEspecialidade(self):
+        return self._especialidade
+
+
+def cadastrar_participante(participantes):
+
+    print("\n" + "=" * 55)
+    print("              CADASTRO DE PARTICIPANTE")
+    print("=" * 55)
+
+    print("\n1 - Aluno")
+    print("2 - Instrutor")
+
+    tipo = input("\nEscolha o tipo de participante: ")
+
+    if tipo not in ["1", "2"]:
+        print("\n[ERRO] Tipo de participante inválido.")
+        return
+
+    nome = input("Nome: ")
+    email = input("E-mail: ")
+
+    try:
+
+        if tipo == "1":
+
+            curso = input("Curso: ")
+
+            participante = Aluno(
+                nome,
+                email,
+                curso
+            )
+
+        else:
+
+            especialidade = input("Especialidade: ")
+
+            participante = Instrutor(
+                nome,
+                email,
+                especialidade
+            )
+
+        participantes.append(participante)
+
+        print("\n[SUCESSO] Participante cadastrado!")
+        print(f"Nome: {participante.obterNome()}")
+        print(f"Tipo: {participante.obterTipo()}")
+
+    except ValueError as erro:
+        print(f"\n[ERRO] {erro}")
+
+
+def listar_participantes(participantes):
+
+    print("\n" + "=" * 55)
+    print("                 PARTICIPANTES")
+    print("=" * 55)
+
+    if not participantes:
+        print("\nNenhum participante cadastrado.")
+        return
+
+    for indice, participante in enumerate(participantes, start=1):
+
+        print(f"\nParticipante #{indice}")
+        print(f"Nome:  {participante.obterNome()}")
+        print(f"E-mail: {participante.obterEmail()}")
+        print(f"Tipo:  {participante.obterTipo()}")
+
+        if isinstance(participante, Aluno):
+            print(f"Curso: {participante.obterCurso()}")
+
+        elif isinstance(participante, Instrutor):
+            print(
+                f"Especialidade: "
+                f"{participante.obterEspecialidade()}"
+            )
+
+        print("-" * 55)
+
+
+def emitir_certificados(participantes):
+
+    print("\n" + "=" * 55)
+    print("                  CERTIFICADOS")
+    print("=" * 55)
+
+    if not participantes:
+        print("\nNenhum participante cadastrado.")
+        return
+
+    # POLIMORFISMO
+    for participante in participantes:
+        print("\n" + participante.emitirCertificado())
+
+#Programa Principal#
+
+def menu():
+
+    participantes = []
+
+    while True:
+
+        print("\n" + "=" * 55)
+        print("             PLATAFORMA DE CURSOS")
+        print("=" * 55)
+
+        print("1 - Cadastrar participante")
+        print("2 - Listar participantes")
+        print("3 - Emitir certificados")
+        print("0 - Sair")
+
+        print("=" * 55)
+
+        opcao = input("Escolha uma opção: ")
+
+        if opcao == "1":
+            cadastrar_participante(participantes)
+
+        elif opcao == "2":
+            listar_participantes(participantes)
+
+        elif opcao == "3":
+            emitir_certificados(participantes)
+
+        elif opcao == "0":
+            print("\nSistema encerrado.")
+            break
+
+        else:
+            print("\n[ERRO] Opção inválida.")
+
+if __name__ == "__main__":
+    menu()
