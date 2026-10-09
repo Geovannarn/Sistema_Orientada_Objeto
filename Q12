@@ -1,0 +1,157 @@
+from abc import ABC, abstractmethod
+
+
+class Lutador(ABC):
+
+    @abstractmethod
+    def obter_nome(self):
+        pass
+
+    @abstractmethod
+    def obter_nivel_poder(self):
+        pass
+
+    @abstractmethod
+    def atacar(self):
+        pass
+
+
+class Saiyajin(Lutador):
+    def __init__(self, nome, nivel_poder):
+        if nome == "":
+            raise ValueError("O nome não pode ser vazio.")
+
+        if nivel_poder <= 0:
+            raise ValueError("O nível de poder deve ser positivo.")
+
+        self.nome = nome
+        self.nivel_poder = nivel_poder
+
+    def obter_nome(self):
+        return self.nome
+
+    def obter_nivel_poder(self):
+        return self.nivel_poder
+
+    def atacar(self):
+        print(
+            self.nome,
+            "realizou um ataque Saiyajin!"
+        )
+
+
+class Androide(Lutador):
+    def __init__(self, nome, nivel_poder):
+        if nome == "":
+            raise ValueError("O nome não pode ser vazio.")
+
+        if nivel_poder <= 0:
+            raise ValueError("O nível de poder deve ser positivo.")
+
+        self.nome = nome
+        self.nivel_poder = nivel_poder
+
+    def obter_nome(self):
+        return self.nome
+
+    def obter_nivel_poder(self):
+        return self.nivel_poder
+
+    def atacar(self):
+        print(
+            self.nome,
+            "realizou um ataque de energia de Androide!"
+        )
+
+
+class Namekuseijin(Lutador):
+    def __init__(self, nome, nivel_poder):
+        if nome == "":
+            raise ValueError("O nome não pode ser vazio.")
+
+        if nivel_poder <= 0:
+            raise ValueError("O nível de poder deve ser positivo.")
+
+        self.nome = nome
+        self.nivel_poder = nivel_poder
+
+    def obter_nome(self):
+        return self.nome
+
+    def obter_nivel_poder(self):
+        return self.nivel_poder
+
+    def atacar(self):
+        print(
+            self.nome,
+            "realizou um ataque Namekuseijin!"
+        )
+
+
+lutadores = []
+
+while True:
+    print("\n=== Torneio de Artes Marciais ===")
+    print("1 - Cadastrar lutador")
+    print("2 - Listar lutadores")
+    print("3 - Simular ataques")
+    print("0 - Sair")
+
+    opcao = input("Escolha uma opção: ")
+
+    try:
+        if opcao == "1":
+            print("\n1 - Saiyajin")
+            print("2 - Androide")
+            print("3 - Namekuseijin")
+
+            tipo = input("Escolha a raça: ")
+
+            nome = input("Nome do lutador: ")
+            nivel = float(input("Nível de poder: "))
+
+            if tipo == "1":
+                lutador = Saiyajin(nome, nivel)
+
+            elif tipo == "2":
+                lutador = Androide(nome, nivel)
+
+            elif tipo == "3":
+                lutador = Namekuseijin(nome, nivel)
+
+            else:
+                print("Raça inválida.")
+                continue
+
+            lutadores.append(lutador)
+
+            print("Lutador cadastrado com sucesso.")
+
+        elif opcao == "2":
+            if len(lutadores) == 0:
+                print("Nenhum lutador cadastrado.")
+            else:
+                for lutador in lutadores:
+                    print(
+                        "Nome:",
+                        lutador.obter_nome(),
+                        "| Nível de poder:",
+                        lutador.obter_nivel_poder()
+                    )
+
+        elif opcao == "3":
+            if len(lutadores) == 0:
+                print("Nenhum lutador cadastrado.")
+            else:
+                for lutador in lutadores:
+                    lutador.atacar()
+
+        elif opcao == "0":
+            print("Torneio encerrado.")
+            break
+
+        else:
+            print("Opção inválida.")
+
+    except ValueError as erro:
+        print("Erro:", erro)

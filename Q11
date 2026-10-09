@@ -1,0 +1,112 @@
+from abc import ABC, abstractmethod
+
+
+class VeiculoTransporte(ABC):
+    def __init__(self, placa, capacidadePassageiros):
+        if placa == "":
+            raise ValueError("A placa não pode ser vazia.")
+
+        if capacidadePassageiros <= 0:
+            raise ValueError("A capacidade deve ser positiva.")
+
+        self.placa = placa
+        self.capacidadePassageiros = capacidadePassageiros
+
+    @abstractmethod
+    def calcularCustoOperacional(self):
+        pass
+
+
+class Onibus(VeiculoTransporte):
+    def __init__(self, placa, capacidadePassageiros, consumoPorKm):
+        super().__init__(placa, capacidadePassageiros)
+
+        if consumoPorKm <= 0:
+            raise ValueError("O consumo deve ser positivo.")
+
+        self.consumoPorKm = consumoPorKm
+
+    def calcularCustoOperacional(self):
+        return self.consumoPorKm * 6.00
+
+
+class Metro(VeiculoTransporte):
+    def __init__(
+        self,
+        placa,
+        capacidadePassageiros,
+        consumoEnergiaPorKm
+    ):
+        super().__init__(placa, capacidadePassageiros)
+
+        if consumoEnergiaPorKm <= 0:
+            raise ValueError("O consumo de energia deve ser positivo.")
+
+        self.consumoEnergiaPorKm = consumoEnergiaPorKm
+
+    def calcularCustoOperacional(self):
+        return self.consumoEnergiaPorKm * 0.80
+
+
+veiculos = []
+
+while True:
+    print("\n=== Transporte Público ===")
+    print("1 - Cadastrar ônibus")
+    print("2 - Cadastrar metrô")
+    print("3 - Listar veículos e custos")
+    print("0 - Sair")
+
+    opcao = input("Escolha uma opção: ")
+
+    try:
+        if opcao == "1":
+            placa = input("Placa: ")
+            capacidade = int(input("Capacidade de passageiros: "))
+            consumo = float(input("Consumo por km (litros): "))
+
+            onibus = Onibus(
+                placa,
+                capacidade,
+                consumo
+            )
+
+            veiculos.append(onibus)
+            print("Ônibus cadastrado.")
+
+        elif opcao == "2":
+            placa = input("Placa: ")
+            capacidade = int(input("Capacidade de passageiros: "))
+            consumo = float(input("Consumo de energia por km (kWh): "))
+
+            metro = Metro(
+                placa,
+                capacidade,
+                consumo
+            )
+
+            veiculos.append(metro)
+            print("Metrô cadastrado.")
+
+        elif opcao == "3":
+            if len(veiculos) == 0:
+                print("Nenhum veículo cadastrado.")
+            else:
+                for veiculo in veiculos:
+                    print(
+                        "Placa:", veiculo.placa,
+                        "| Capacidade:",
+                        veiculo.capacidadePassageiros,
+                        "| Custo por km: R$",
+                        f"{veiculo.calcularCustoOperacional():.2f}"
+                    )
+
+        elif opcao == "0":
+            print("Programa encerrado.")
+            break
+
+        else:
+            print("Opção inválida.")
+
+    except ValueError as erro:
+        print("Erro:", erro)

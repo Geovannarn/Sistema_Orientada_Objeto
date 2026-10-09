@@ -1,0 +1,143 @@
+class Personagem:
+    def __init__(self, nome, constelacao):
+        self.nome = nome
+        self.constelacao = constelacao
+
+    def apresentar(self):
+        print(
+            "Nome:", self.nome,
+            "| Constelação:", self.constelacao
+        )
+
+
+class CavaleiroDeBronze(Personagem):
+    def __init__(self, nome, constelacao, poder_de_luta):
+        super().__init__(nome, constelacao)
+        self.poder_de_luta = poder_de_luta
+
+    def golpe_especial(self):
+        print(
+            self.nome,
+            "usou seu golpe especial com poder de luta",
+            self.poder_de_luta
+        )
+
+
+class CavaleiroDeOuro(Personagem):
+    def __init__(self, nome, constelacao, casa_do_zodiaco):
+        super().__init__(nome, constelacao)
+        self.casa_do_zodiaco = casa_do_zodiaco
+
+    def defender_casa(self):
+        print(
+            self.nome,
+            "está defendendo a casa de",
+            self.casa_do_zodiaco
+        )
+
+
+class CavaleiroHibrido(CavaleiroDeBronze, CavaleiroDeOuro):
+    def __init__(
+        self,
+        nome,
+        constelacao,
+        poder_de_luta,
+        casa_do_zodiaco
+    ):
+        Personagem.__init__(self, nome, constelacao)
+        self.poder_de_luta = poder_de_luta
+        self.casa_do_zodiaco = casa_do_zodiaco
+
+
+personagens = []
+
+while True:
+    print("\n=== Cavaleiros do Zodíaco ===")
+    print("1 - Cadastrar personagem")
+    print("2 - Listar personagens")
+    print("3 - Executar golpe especial")
+    print("4 - Defender casa")
+    print("0 - Sair")
+
+    opcao = input("Escolha uma opção: ")
+
+    if opcao == "1":
+        print("\n1 - Cavaleiro de Bronze")
+        print("2 - Cavaleiro de Ouro")
+        print("3 - Cavaleiro Híbrido")
+
+        tipo = input("Escolha o tipo: ")
+
+        nome = input("Nome: ")
+        constelacao = input("Constelação: ")
+
+        if tipo == "1":
+            poder = int(input("Poder de luta: "))
+
+            personagem = CavaleiroDeBronze(
+                nome,
+                constelacao,
+                poder
+            )
+
+            personagens.append(personagem)
+
+        elif tipo == "2":
+            casa = input("Casa do Zodíaco: ")
+
+            personagem = CavaleiroDeOuro(
+                nome,
+                constelacao,
+                casa
+            )
+
+            personagens.append(personagem)
+
+        elif tipo == "3":
+            poder = int(input("Poder de luta: "))
+            casa = input("Casa do Zodíaco: ")
+
+            personagem = CavaleiroHibrido(
+                nome,
+                constelacao,
+                poder,
+                casa
+            )
+
+            personagens.append(personagem)
+
+        else:
+            print("Tipo inválido.")
+            continue
+
+        print("Personagem cadastrado.")
+
+    elif opcao == "2":
+        if len(personagens) == 0:
+            print("Nenhum personagem cadastrado.")
+        else:
+            for personagem in personagens:
+                personagem.apresentar()
+
+    elif opcao == "3":
+        if len(personagens) == 0:
+            print("Nenhum personagem cadastrado.")
+        else:
+            for personagem in personagens:
+                if hasattr(personagem, "golpe_especial"):
+                    personagem.golpe_especial()
+
+    elif opcao == "4":
+        if len(personagens) == 0:
+            print("Nenhum personagem cadastrado.")
+        else:
+            for personagem in personagens:
+                if hasattr(personagem, "defender_casa"):
+                    personagem.defender_casa()
+
+    elif opcao == "0":
+        print("Programa encerrado.")
+        break
+
+    else:
+        print("Opção inválida.")
